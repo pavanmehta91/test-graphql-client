@@ -42,24 +42,24 @@ class Header extends React.Component {
               </NavbarBrand>
               <Nav className="ml-auto" navbar>
                 <NavLink tag={Link} to="/add-question">
-                    Add Question
+                  Add Question
                 </NavLink>
                 {user ? (
                   <NavLink tag={Link} to="/me">
                     {user.name}
                   </NavLink>
                 ) : (
-                  <NavLink
-                    id="nav-login"
-                    className="pointer"
-                    onClick={() => {
-                      this.props.toggleLogin();
-                      console.log("Enter Name");
-                    }}
-                  >
-                    Enter Name
+                    <NavLink
+                      id="nav-login"
+                      className="pointer"
+                      onClick={() => {
+                        this.props.toggleLogin();
+                        console.log("Enter Name");
+                      }}
+                    >
+                      Enter Name
                   </NavLink>
-                )}
+                  )}
               </Nav>
               {isLoginPopOverVisible && (
                 <LoginPopOver

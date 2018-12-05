@@ -8,8 +8,8 @@ import { Link, withRouter } from 'react-router-dom';
 const Questions = (props) => {
   return (
     <div>
-      <Query query={GET_QUESTIONS} variables={{tag: props.selectedTag}}>
-      {({ loading, error, data }) => {
+      <Query query={GET_QUESTIONS} variables={{ tag: props.selectedTag }}>
+        {({ loading, error, data }) => {
           if (loading) {
             return <Loader />;
           }
@@ -18,28 +18,12 @@ const Questions = (props) => {
           }
           return (<ListGroup>
             <Row>
-               <Col md="2">Name</Col>
-               <Col md="6">Questions</Col>
-             </Row>
-          {
-  
-           data.questions.map((question) => 
-                <ListGroupItem className="pointer" onClick={() => props.history.push(`/question/${question.id}`)}>
-                  <Row>
-                    <Col md="2">{question.by.name}</Col>
-                    <Col md="6">{question.title}</Col>
-                  </Row>
-                  <Row>
-                    <Col md="2"></Col>
-                    <Col>{question.body}</Col>
-                  </Row>
-
-
-                </ListGroupItem>
-              )
-          }
+              <Col md="2">Name</Col>
+              <Col md="6">Questions</Col>
+            </Row>
+            <QuestionList questions={data.questions} />
           </ListGroup>
-        )
+          )
         }}
       </Query>
     </div>
@@ -47,4 +31,36 @@ const Questions = (props) => {
   );
 }
 
+let QuestionList1 = (props) => {
+  const { questions } = props;
+  return (
+    <div>
+      {
+        questions.map((question) =>
+          <ListGroupItem className="pointer" onClick={() => props.history.push(`/question/${question.id}`)}>
+            <Question question={question} />
+          </ListGroupItem>
+        )
+      }
+    </div>
+  )
+}
+
+export const Question = (props) => {
+  const { question } = props;
+  return (
+    <div>
+      <Row>
+        <Col md="2">{question.by.name}</Col>
+        <Col md="6">{question.title}</Col>
+      </Row>
+      <Row>
+        <Col md="2"></Col>
+        <Col>{question.body}</Col>
+      </Row>
+    </div>
+  )
+}
+
+export const QuestionList = withRouter(QuestionList1);
 export default withRouter(Questions);

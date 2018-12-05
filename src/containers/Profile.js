@@ -3,6 +3,7 @@ import { GET_USER, GET_QUESTIONS } from "graphql/queries";
 import { graphql, compose, Query } from "react-apollo";
 import Loader from "components/Loader/Loader.component";
 import { Redirect } from "react-router-dom";
+import {QuestionList} from "components/Questions/Questions.component"
 const Profile = props => {
   if (props.getUser.loading) {
     return <Loader />;
@@ -28,7 +29,7 @@ const Profile = props => {
           if (error) {
             return <div> Some Error occured</div>;
           }
-          return <div>{JSON.stringify(data, null, 4)}</div>;
+          return <QuestionList questions={data.questions}/>
         }}
       </Query>
     </div>
