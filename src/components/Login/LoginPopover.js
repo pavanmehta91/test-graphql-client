@@ -6,7 +6,7 @@ import { ADD_USER } from "graphql/mutations";
 import { GET_USER } from "graphql/queries";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
-const LoginPopover = (addUser, ...rest) => {
+const LoginPopover = ({addUser, ...rest}) => {
   return (
     <Popover {...rest} hideArrow>
       <PopoverBody>
