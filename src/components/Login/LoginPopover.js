@@ -6,7 +6,7 @@ import { ADD_USER } from "graphql/mutations";
 import { GET_USER } from "graphql/queries";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
-const LoginPopover = ({addUser, ...rest}) => {
+const LoginPopover = ({ addUser, ...rest }) => {
   return (
     <Popover {...rest} hideArrow>
       <PopoverBody>
@@ -23,7 +23,7 @@ const LoginPopover = ({addUser, ...rest}) => {
                 localStorage.setItem("userid", user.id); // writing to localstorage
                 cache.writeQuery({
                   query: GET_USER,
-                  data: results.data
+                  data: { user }
                 });
               },
               variables: {
@@ -31,6 +31,8 @@ const LoginPopover = ({addUser, ...rest}) => {
               }
             });
             rest.toggle();
+            // Patch
+            window.location.reload();
           }}
           render={({ values, handleSubmit, handleChange }) => (
             <Form onSubmit={handleSubmit}>

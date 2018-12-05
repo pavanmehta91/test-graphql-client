@@ -49,7 +49,7 @@ const client = new ApolloClient({
           const data = cache.readQuery({
             query: GET_SELECTED_TAG
           });
-          if(data.selectedTag === tag ){
+          if (data.selectedTag === tag) {
             data.selectedTag = "";
           } else {
             data.selectedTag = tag;
@@ -64,13 +64,7 @@ const client = new ApolloClient({
     userid: localStorage.getItem("userid") || ""
   }
 });
-// client
-//   .query({
-//     query: GET_QUESTIONS
-//   })
-//   .then(result => {
-//     console.log(result);
-//   });
+
 
 class App extends Component {
   render() {
