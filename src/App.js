@@ -16,7 +16,7 @@ const client = new ApolloClient({
   clientState: {
     defaults: {
       isLoginPopOverVisible: false,
-      selectedTag: "graphql"
+      selectedTag: ""
     },
     resolvers: {
       Query: {
@@ -49,7 +49,12 @@ const client = new ApolloClient({
           const data = cache.readQuery({
             query: GET_SELECTED_TAG
           });
-          data.selectedTag = tag;
+          if(data.selectedTag === tag ){
+            data.selectedTag = "";
+          } else {
+            data.selectedTag = tag;
+          }
+
           cache.writeData({ data });
         }
       }

@@ -41,6 +41,9 @@ class Header extends React.Component {
                 Q&A
               </NavbarBrand>
               <Nav className="ml-auto" navbar>
+                <NavLink tag={Link} to="/add-question">
+                    Add Question
+                </NavLink>
                 {user ? (
                   <NavLink tag={Link} to="/me">
                     {user.name}
