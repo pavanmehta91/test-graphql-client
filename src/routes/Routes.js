@@ -12,6 +12,8 @@ export default () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/me" component={Profile} />
+        <Route exact path="/question/edit/:id" component={Home} />
+        <Route exact path="/question/:id" component={Home} />
         <Route render={props => (
           <h1> 404 No Page Found on this route</h1>
         )} />
